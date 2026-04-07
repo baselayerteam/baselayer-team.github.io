@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BaseLayer — Websites & Business Tools for South African Businesses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #1D9E75;
+    --green-light: #E1F5EE;
+    --green-mid: #0F6E56;
+    --green-dark: #085041;
+    --black: #0D0D0D;
+    --white: #FFFFFF;
+    --gray-50: #F7F7F5;
+    --gray-100: #EFEFEC;
+    --gray-200: #DDDDD8;
+    --gray-400: #9C9C96;
+    --gray-600: #5C5C58;
+    --gray-800: #2A2A28;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --radius-xl: 32px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 2rem;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--black);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--green); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    color: var(--gray-600);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--black); }
+
+  .nav-cta {
+    background: var(--green) !important;
+    color: var(--white) !important;
+    padding: 9px 20px;
+    border-radius: 999px;
+    font-weight: 500 !important;
+    font-size: 13px !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--green-mid) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 120px 2rem 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-light);
+    color: var(--green-mid);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 2rem;
+    letter-spacing: 0.3px;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 7vw, 80px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: var(--black);
+    max-width: 820px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--green);
+  }
+
+  .hero p {
+    font-size: 18px;
+    color: var(--gray-600);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    background: var(--black);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    font-family: var(--font-body);
+  }
+
+  .btn-primary:hover { background: var(--gray-800); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--black);
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: none;
+    border: 1.5px solid var(--gray-200);
+    transition: border-color 0.2s, transform 0.15s;
+    font-family: var(--font-body);
+  }
+
+  .btn-outline:hover { border-color: var(--gray-400); transform: translateY(-1px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--gray-100);
+  }
+
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -1px;
+  }
+  .stat-label { font-size: 13px; color: var(--gray-400); margin-top: 2px; }
+
+  /* SECTION SHARED */
+  section { padding: 100px 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 1rem;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    color: var(--gray-600);
+    max-width: 520px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* SERVICES */
+  .services { background: var(--gray-50); }
+
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3.5rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    border: 1px solid var(--gray-100);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.07);
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--green);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .service-icon {
+    width: 44px; height: 44px;
+    background: var(--green-light);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-icon svg { width: 20px; height: 20px; stroke: var(--green); }
+
+  .service-card h3 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.3px;
+  }
+
+  .service-card p {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .service-price {
+    font-size: 13px;
+    color: var(--green);
+    font-weight: 500;
+    margin-top: 1rem;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-visual {
+    background: var(--gray-50);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    border: 1px solid var(--gray-100);
+    position: relative;
+  }
+
+  .about-quote {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-quote em {
+    font-style: normal;
+    color: var(--green);
+  }
+
+  .about-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1.5rem;
+  }
+
+  .pill {
+    font-size: 12px;
+    background: var(--green-light);
+    color: var(--green-mid);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+
+  .about-content p {
+    font-size: 16px;
+    color: var(--gray-600);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-content p strong {
+    color: var(--black);
+    font-weight: 500;
+  }
+
+  .about-sig {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .about-avatars {
+    display: flex;
+  }
+
+  .avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    border: 2px solid var(--white);
+  }
+
+  .av1 { background: var(--green-light); color: var(--green-mid); }
+  .av2 { background: #E6F1FB; color: #185FA5; margin-left: -8px; }
+  .av3 { background: #FAEEDA; color: #854F0B; margin-left: -8px; }
+
+  .about-sig-text { font-size: 13px; color: var(--gray-600); }
+  .about-sig-text strong { color: var(--black); font-weight: 500; display: block; }
+
+  /* PRICING */
+  .pricing { background: var(--black); color: var(--white); }
+  .pricing .section-label { color: var(--green); }
+  .pricing .section-heading { color: var(--white); }
+  .pricing .section-sub { color: rgba(255,255,255,0.5); }
+
+  .pricing-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    align-items: start;
+  }
+
+  .pricing-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: transform 0.2s;
+  }
+
+  .pricing-card:hover { transform: translateY(-4px); }
+
+  .pricing-card.featured {
+    background: var(--green);
+    border-color: var(--green);
+    transform: scale(1.03);
+  }
+
+  .pricing-card.featured:hover { transform: scale(1.03) translateY(-4px); }
+
+  .plan-badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.2);
+    color: var(--white);
+    padding: 4px 12px;
+    border-radius: 999px;
+    display: inline-block;
+    margin-bottom: 1.25rem;
+  }
+
+  .plan-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.5px;
+    margin-bottom: 0.25rem;
+  }
+
+  .plan-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .plan-price {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -1.5px;
+    margin-bottom: 0.25rem;
+  }
+
+  .plan-period {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1.5rem;
+  }
+
+  .plan-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+    margin: 1.25rem 0;
+  }
+
+  .plan-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 1.75rem;
+  }
+
+  .plan-features li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .plan-features li::before {
+    content: '';
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    flex-shrink: 0;
+    margin-top: 1px;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l3 3 5-6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .plan-btn {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-family: var(--font-body);
+    background: rgba(255,255,255,0.12);
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .plan-btn:hover { background: rgba(255,255,255,0.2); }
+
+  .pricing-card.featured .plan-btn {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+  }
+
+  .pricing-card.featured .plan-btn:hover { background: var(--gray-800); }
+
+  /* WHY */
+  .why { background: var(--gray-50); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 3.5rem;
+  }
+
+  .why-item {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    border: 1px solid var(--gray-100);
+  }
+
+  .why-num {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--green-light);
+    letter-spacing: -2px;
+    margin-bottom: 0.75rem;
+    line-height: 1;
+  }
+
+  .why-item h4 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.3px;
+  }
+
+  .why-item p {
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* FAQ */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 3.5rem;
+  }
+
+  .faq-item {
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    border: 1px solid var(--gray-100);
+  }
+
+  .faq-item h4 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.2px;
+  }
+
+  .faq-item p {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--green);
+    text-align: center;
+    padding: 100px 2rem;
+  }
+
+  .cta-section .section-label { color: rgba(255,255,255,0.7); }
+
+  .cta-section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -2px;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .cta-section p {
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .cta-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-white {
+    background: var(--white);
+    color: var(--green-mid);
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-family: var(--font-body);
+  }
+
+  .btn-white:hover { background: var(--gray-50); transform: translateY(-1px); }
+
+  .btn-ghost-white {
+    background: rgba(255,255,255,0.15);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    transition: all 0.2s;
+    font-family: var(--font-body);
+  }
+
+  .btn-ghost-white:hover { background: rgba(255,255,255,0.25); transform: translateY(-1px); }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-card {
+    background: var(--gray-50);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    border: 1px solid var(--gray-100);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .contact-row:last-child { border-bottom: none; }
+
+  .contact-icon {
+    width: 40px; height: 40px;
+    background: var(--green-light);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon svg { width: 18px; height: 18px; stroke: var(--green); }
+  .contact-label { font-size: 11px; color: var(--gray-400); margin-bottom: 2px; }
+  .contact-value { font-size: 15px; color: var(--black); font-weight: 500; }
+
+  .contact-note {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--green-light);
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    color: var(--green-mid);
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 3rem 2rem 2rem;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+
+  .footer-logo span { color: var(--green); }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 1.5rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  .social-links { display: flex; gap: 12px; }
+
+  .social-link {
+    width: 34px; height: 34px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+  }
+
+  .social-link:hover { background: rgba(255,255,255,0.15); color: var(--white); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge { animation: fadeUp 0.5s ease both; }
+  .hero h1 { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero p { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-btns { animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-stats { animation: fadeUp 0.6s 0.4s ease both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    section { padding: 70px 1.25rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-card.featured { transform: scale(1); }
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+    .services-header { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Base<span>Layer</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://wa.me/27647547401" class="nav-cta">Get a free quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Proudly South African · Fast delivery · No tech skills needed</div>
+  <h1>Get your business <em>online.</em><br>Get it working smarter.</h1>
+  <p>We build professional websites and custom business tools for small businesses across South Africa — fast, affordable, and straightforward.</p>
+  <div class="hero-btns">
+    <a href="https://wa.me/27647547401" class="btn-primary">WhatsApp us now</a>
+    <a href="#services" class="btn-outline">See what we offer</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">48hrs</div>
+      <div class="stat-label">Starter delivery</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">R2,500</div>
+      <div class="stat-label">Starting price</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Local support</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Hidden fees</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <div class="section-label">What we do</div>
+        <h2 class="section-heading">Two ways we help<br>your business grow</h2>
+      </div>
+      <p class="section-sub">Whether you need a simple online presence or a tool to run your business better — we've got you covered.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5"><rect x="1" y="3" width="18" height="13" rx="2"/><path d="M1 7h18"/><path d="M6 7v9"/></svg>
+        </div>
+        <h3>Professional websites</h3>
+        <p>Clean, mobile-friendly websites that make customers trust you before they even walk in the door.</p>
+        <div class="service-price">From R2,500 once-off</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5"><rect x="4" y="1" width="12" height="18" rx="2"/><path d="M7 5h6M7 9h6M7 13h3"/></svg>
+        </div>
+        <h3>Booking systems</h3>
+        <p>Let customers book appointments online. No more missed calls or double bookings.</p>
+        <div class="service-price">From R3,500 once-off</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5"><path d="M2 15l4-5 4 3 4-7 4 4"/><rect x="1" y="1" width="18" height="18" rx="2"/></svg>
+        </div>
+        <h3>Business dashboards</h3>
+        <p>Track stock, staff, sales or customer feedback — all in one simple tool built just for you.</p>
+        <div class="service-price">From R2,000 once-off</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5"><path d="M10 1v18M1 10h18"/><circle cx="10" cy="10" r="7"/></svg>
+        </div>
+        <h3>Invoice generators</h3>
+        <p>Create, send and save quotes and invoices from your phone. No Excel or paper needed.</p>
+        <div class="service-price">From R2,500 once-off</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-quote">"We treat your business <em>like it's our own</em> — because that's the only way we know how to work."</div>
+        <p style="font-size:14px;color:var(--gray-600);line-height:1.7;font-weight:300;">A small team based right here in South Africa, building real digital tools for real local businesses.</p>
+        <div class="about-pills">
+          <span class="pill">Proudly SA</span>
+          <span class="pill">Fast turnaround</span>
+          <span class="pill">WhatsApp support</span>
+          <span class="pill">No hidden costs</span>
+          <span class="pill">Real people</span>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-label">About us</div>
+        <h2 class="section-heading">We're just real people who love helping businesses grow</h2>
+        <p>We started BaseLayer because we kept seeing the same thing — great local businesses with no online presence, losing customers to competitors simply because they couldn't be found on Google.</p>
+        <p>We're a small team based right here in South Africa. We know what it's like to run a business on a tight budget, deal with load shedding, and still try to grow. That's exactly why we keep things <strong>simple, affordable, and straightforward</strong> — no overseas pricing, no confusing contracts, no waiting weeks for a response.</p>
+        <p>When you message us, you're talking directly to the people building your site.</p>
+        <div class="about-sig">
+          <div class="about-avatars">
+            <div class="avatar av1">BL</div>
+            <div class="avatar av2">TM</div>
+            <div class="avatar av3">KM</div>
+          </div>
+          <div class="about-sig-text">
+            <strong>The BaseLayer team</strong>
+            Based in South Africa
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="pricing-header">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-heading">Simple, honest pricing</h2>
+      <p class="section-sub" style="margin:0 auto;">No hidden fees. No confusing tech jargon. Just a clear price for a working product.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-desc">1-page website, delivered in 48 hours</div>
+        <div class="plan-price">R2,500</div>
+        <div class="plan-period">once-off</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>1-page website</li>
+          <li>Mobile friendly</li>
+          <li>Contact form</li>
+          <li>WhatsApp button</li>
+          <li>Delivered in 48 hours</li>
+        </ul>
+        <a href="https://wa.me/27647547401" class="plan-btn">Get a quote</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="plan-badge">Most popular</div>
+        <div class="plan-name">Standard</div>
+        <div class="plan-desc">Full multi-page website with SEO</div>
+        <div class="plan-price">R4,500</div>
+        <div class="plan-period">once-off</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Up to 5 pages</li>
+          <li>SEO basics included</li>
+          <li>Google listing setup</li>
+          <li>Photo gallery</li>
+          <li>Delivered in 5 days</li>
+        </ul>
+        <a href="https://wa.me/27647547401" class="plan-btn">Get a quote</a>
+      </div>
+      <div class="pricing-card">
+        <div class="plan-name">Growth</div>
+        <div class="plan-desc">Website + booking system + monthly support</div>
+        <div class="plan-price">R6,500</div>
+        <div class="plan-period">+ R700/month</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Everything in Standard</li>
+          <li>Booking system included</li>
+          <li>Monthly updates</li>
+          <li>Analytics setup</li>
+          <li>Priority WhatsApp support</li>
+        </ul>
+        <a href="https://wa.me/27647547401" class="plan-btn">Get a quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="container">
+    <div class="section-label">Why BaseLayer</div>
+    <h2 class="section-heading">Built for South African businesses</h2>
+    <p class="section-sub">We understand the local market. No overseas pricing, no complicated contracts.</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <h4>Fast delivery</h4>
+        <p>Most sites ready within 48–72 hours of your approval. No waiting weeks.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <h4>No tech skills needed</h4>
+        <p>You tell us what you want. We handle everything else from start to finish.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <h4>Affordable</h4>
+        <p>Priced for real small businesses, not corporate budgets. Transparent from day one.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">04</div>
+        <h4>Local support</h4>
+        <p>WhatsApp us directly — no call centres, no ticket queues, no waiting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-heading">Got questions?<br>We've got answers.</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>How long does a website take to build?</h4>
+        <p>Starter sites are ready within 48 hours. Standard and Growth packages take 3–5 days depending on how quickly you send us content and feedback.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What's included in the design process?</h4>
+        <p>We handle everything — design, content, setup and publishing. You just tell us about your business and send your logo if you have one. No tech skills needed at all.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do I need to know how to code?</h4>
+        <p>Not at all. We build everything and you can reach us on WhatsApp anytime you have a question or need an update.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How much does a website or app cost?</h4>
+        <p>Websites start from R2,500 and apps from R2,000 — all once-off. No monthly fees unless you choose our Growth package. Check our pricing section above.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What support do I get after launch?</h4>
+        <p>Direct WhatsApp support — message us anytime. On Growth this is included monthly. On Starter and Standard we're still available, response times vary based on workload.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Can you help if I already have a website?</h4>
+        <p>Yes. We can redesign, rebuild, or improve what you have. Many businesses come to us to make their sites faster, more mobile-friendly, or easier to use.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-label">Get started</div>
+    <h2>Let's build your<br>online presence</h2>
+    <p>Tell us about your business and we'll show you exactly what we'd build. First chat is always free, no pressure.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/27647547401" class="btn-white">WhatsApp us now</a>
+      <a href="mailto:baselayerteam@gmail.com" class="btn-ghost-white">Send an email</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">Contact</div>
+        <h2 class="section-heading">Ready to get started?</h2>
+        <p class="section-sub">Message us on WhatsApp or email — we usually respond within a few hours. First chat is always free, no pressure.</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5"><path d="M17.5 13.4c0 .3-.1.7-.2 1-.2.3-.5.7-.8 1-.6.5-1.3.7-2 .7-.5 0-1.1-.1-1.6-.4-1.8-.7-3.4-1.9-4.8-3.3C6.7 11 5.5 9.4 4.8 7.6c-.3-.5-.4-1.1-.4-1.6 0-.7.2-1.4.7-2 .3-.4.7-.6 1.1-.8H6c.3 0 .7.1.9.5l1.7 2.5c.2.3.2.6 0 .9l-.8.9c-.1.1-.1.3 0 .4.6 1.1 1.5 2.1 2.6 2.7.1.1.3.1.4 0l.8-.9c.2-.3.6-.4.9-.2l2.5 1.7c.3.2.5.6.5.9h-.5z"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value">+27 64 754 7401</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5"><rect x="1" y="4" width="18" height="13" rx="2"/><path d="M1 7l9 6 9-6"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">baselayerteam@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5"><path d="M17 8.5c0 5.5-7 10-7 10S3 14 3 8.5a7 7 0 1114 0z"/><circle cx="10" cy="8.5" r="2.5"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Based in</div>
+            <div class="contact-value">South Africa</div>
+          </div>
+        </div>
+        <div class="contact-note">
+          We offer a free consultation — just tell us about your business and what you need. No obligation, no pressure.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">Base<span>Layer</span></a>
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 BaseLayer · baselayerteam@gmail.com · Websites & business tools for South African businesses</p>
+    <div class="social-links">
+      <a href="https://instagram.com/baselayer.team" class="social-link" title="Instagram">ig</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
