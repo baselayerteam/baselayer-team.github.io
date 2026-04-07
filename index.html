@@ -422,7 +422,7 @@
   .about-sig-text strong { color: var(--black); font-weight: 500; display: block; }
 
   /* PRICING */
-  .pricing { background: var(--black); color: var(--white); }
+  .pricing { background: var(--black); color: var(--white); overflow: visible; }
   .pricing .section-label { color: var(--green); }
   .pricing .section-heading { color: var(--white); }
   .pricing .section-sub { color: rgba(255,255,255,0.5); }
@@ -454,10 +454,10 @@
   .pricing-card.featured {
     background: var(--green);
     border-color: var(--green);
-    transform: scale(1.03);
+    box-shadow: 0 0 0 3px var(--green), 0 20px 40px rgba(29,158,117,0.25);
   }
 
-  .pricing-card.featured:hover { transform: scale(1.03) translateY(-4px); }
+  .pricing-card.featured:hover { transform: translateY(-4px); }
 
   .plan-badge {
     font-size: 11px;
