@@ -443,6 +443,67 @@
     overflow: visible;
   }
 
+  .pricing-grid-bottom {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    align-items: start;
+    padding: 0 4px 12px;
+    overflow: visible;
+    max-width: 740px;
+    margin: 0 auto;
+  }
+
+  .plan-price-block {
+    background: rgba(255,255,255,0.07);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .plan-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .plan-price-row + .plan-price-row {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .plan-price-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+  }
+
+  .plan-price-value {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+
+  .plan-price-value.retainer { color: #5DCAA5; }
+
+  .plan-price-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .pricing-card.featured .plan-price-value.retainer { color: rgba(255,255,255,0.85); }
+  .pricing-card.featured .plan-price-block { background: rgba(0,0,0,0.15); }
+  .pricing-card.featured .plan-price-row + .plan-price-row { border-color: rgba(255,255,255,0.2); }
+  .pricing-card.featured .plan-price-note { border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.5); }
+
   .pricing-card {
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
@@ -991,52 +1052,120 @@
     <div class="pricing-header">
       <div class="section-label">Pricing</div>
       <h2 class="section-heading">Simple, honest pricing</h2>
-      <p class="section-sub" style="margin:0 auto;">No hidden fees. No confusing tech jargon. Just a clear price for a working product.</p>
+      <p class="section-sub" style="margin:0 auto;">Every package includes a once-off build fee and a mandatory monthly retainer — so your product always works, and you always have someone to call.</p>
     </div>
     <div class="pricing-grid">
       <div class="pricing-card">
         <div class="plan-name">Starter</div>
-        <div class="plan-desc">1-page website, delivered in 48 hours</div>
-        <div class="plan-price">R2,500</div>
-        <div class="plan-period">once-off</div>
-        <div class="plan-divider"></div>
+        <div class="plan-desc">A clean, professional 1-page website delivered in 48 hours.</div>
+        <div class="plan-price-block">
+          <div class="plan-price-row">
+            <span class="plan-price-label">Once-off build</span>
+            <span class="plan-price-value">R2,500</span>
+          </div>
+          <div class="plan-price-note">No monthly retainer — once-off payment, yours to keep.</div>
+        </div>
         <ul class="plan-features">
-          <li>1-page website</li>
-          <li>Mobile friendly</li>
-          <li>Contact form</li>
-          <li>WhatsApp button</li>
+          <li>1-page website, mobile friendly</li>
+          <li>Contact form and WhatsApp button</li>
           <li>Delivered in 48 hours</li>
+          <li>WhatsApp support for 30 days after launch</li>
+          <li>Upgrade to Standard anytime</li>
         </ul>
         <a href="https://wa.me/27647547401" class="plan-btn">Get a quote</a>
       </div>
       <div class="pricing-card featured">
         <div class="plan-badge">Most popular</div>
         <div class="plan-name">Standard</div>
-        <div class="plan-desc">Full multi-page website with SEO</div>
-        <div class="plan-price">R4,500</div>
-        <div class="plan-period">once-off</div>
-        <div class="plan-divider"></div>
+        <div class="plan-desc">A full multi-page website with SEO and Google listing setup.</div>
+        <div class="plan-price-block">
+          <div class="plan-price-row">
+            <span class="plan-price-label">Once-off build</span>
+            <span class="plan-price-value">R4,500</span>
+          </div>
+          <div class="plan-price-row">
+            <span class="plan-price-label">Monthly retainer</span>
+            <span class="plan-price-value retainer">R900/month</span>
+          </div>
+          <div class="plan-price-note">Mandatory — covers support, updates and uptime monitoring.</div>
+        </div>
         <ul class="plan-features">
-          <li>Up to 5 pages</li>
-          <li>SEO basics included</li>
-          <li>Google listing setup</li>
-          <li>Photo gallery</li>
-          <li>Delivered in 5 days</li>
+          <li>Up to 5 pages, mobile friendly</li>
+          <li>SEO basics and Google listing setup</li>
+          <li>Photo gallery included</li>
+          <li>Monthly performance report</li>
+          <li>Priority WhatsApp support (4hr response)</li>
         </ul>
         <a href="https://wa.me/27647547401" class="plan-btn">Get a quote</a>
       </div>
       <div class="pricing-card">
         <div class="plan-name">Growth</div>
-        <div class="plan-desc">Website + booking system + monthly support</div>
-        <div class="plan-price">R6,500</div>
-        <div class="plan-period">+ R700/month</div>
-        <div class="plan-divider"></div>
+        <div class="plan-desc">Full website plus an integrated booking system and analytics setup.</div>
+        <div class="plan-price-block">
+          <div class="plan-price-row">
+            <span class="plan-price-label">Once-off build</span>
+            <span class="plan-price-value">R6,500</span>
+          </div>
+          <div class="plan-price-row">
+            <span class="plan-price-label">Monthly retainer</span>
+            <span class="plan-price-value retainer">R1,200/month</span>
+          </div>
+          <div class="plan-price-note">Mandatory — covers support, updates and uptime monitoring.</div>
+        </div>
         <ul class="plan-features">
           <li>Everything in Standard</li>
-          <li>Booking system included</li>
-          <li>Monthly updates</li>
-          <li>Analytics setup</li>
-          <li>Priority WhatsApp support</li>
+          <li>Booking system built and managed</li>
+          <li>Analytics setup and monthly report</li>
+          <li>Up to 2hrs of changes per month</li>
+          <li>Priority WhatsApp support (4hr response)</li>
+        </ul>
+        <a href="https://wa.me/27647547401" class="plan-btn">Get a quote</a>
+      </div>
+    </div>
+    <div class="pricing-grid-bottom">
+      <div class="pricing-card">
+        <div class="plan-name">Business Tools</div>
+        <div class="plan-desc">A custom business tool — CRM, dashboard, invoice generator, or booking system built to your workflow.</div>
+        <div class="plan-price-block">
+          <div class="plan-price-row">
+            <span class="plan-price-label">Once-off build</span>
+            <span class="plan-price-value">From R2,000</span>
+          </div>
+          <div class="plan-price-row">
+            <span class="plan-price-label">Monthly retainer</span>
+            <span class="plan-price-value retainer">R1,200/month</span>
+          </div>
+          <div class="plan-price-note">Mandatory — covers updates, maintenance and staff support.</div>
+        </div>
+        <ul class="plan-features">
+          <li>Custom tool built to your workflow</li>
+          <li>Staff onboarding and training</li>
+          <li>Bug fixes and feature updates</li>
+          <li>Monthly usage check-in call</li>
+          <li>Priority WhatsApp support (4hr response)</li>
+        </ul>
+        <a href="https://wa.me/27647547401" class="plan-btn">Get a quote</a>
+      </div>
+      <div class="pricing-card">
+        <div class="plan-name">Full Service</div>
+        <div class="plan-desc">Website and business tool combined — the complete BaseLayer package for maximum impact.</div>
+        <div class="plan-price-block">
+          <div class="plan-price-row">
+            <span class="plan-price-label">Once-off build</span>
+            <span class="plan-price-value">Custom quote</span>
+          </div>
+          <div class="plan-price-row">
+            <span class="plan-price-label">Monthly retainer</span>
+            <span class="plan-price-value retainer">R1,800/month</span>
+          </div>
+          <div class="plan-price-note">Mandatory — covers full support across website and tools.</div>
+        </div>
+        <ul class="plan-features">
+          <li>Everything in Growth and Business Tools</li>
+          <li>Quarterly strategy call</li>
+          <li>First priority on new features</li>
+          <li>Dedicated account management</li>
+          <li>WhatsApp response within 2hrs</li>
         </ul>
         <a href="https://wa.me/27647547401" class="plan-btn">Get a quote</a>
       </div>
@@ -1064,7 +1193,7 @@
       <div class="why-item">
         <div class="why-num">03</div>
         <h4>Affordable</h4>
-        <p>Priced for real small businesses, not corporate budgets. Transparent from day one.</p>
+        <p>Priced for real businesses, not corporate agency budgets. Transparent from day one.</p>
       </div>
       <div class="why-item">
         <div class="why-num">04</div>
@@ -1094,12 +1223,12 @@
         <p>Not at all. We build everything and you can reach us on WhatsApp anytime you have a question or need an update.</p>
       </div>
       <div class="faq-item">
-        <h4>How much does a website or app cost?</h4>
-        <p>Websites start from R2,500 and apps from R2,000 — all once-off. No monthly fees unless you choose our Growth package. Check our pricing section above.</p>
+        <h4>How much does a website or business tool cost?</h4>
+        <p>Websites start from R2,500 and business tools from R2,000 once-off. The Starter package is once-off with no monthly fee. All other packages include a mandatory monthly retainer starting from R900/month — this covers ongoing support, updates, and maintenance so your product always works.</p>
       </div>
       <div class="faq-item">
-        <h4>What support do I get after launch?</h4>
-        <p>Direct WhatsApp support — message us anytime. On Growth this is included monthly. On Starter and Standard we're still available, response times vary based on workload.</p>
+        <h4>Why is the monthly retainer mandatory?</h4>
+        <p>We include a retainer on every package because your business depends on your digital tools working reliably. The retainer covers ongoing support, updates, bug fixes, and direct WhatsApp access — so you're never left without help when you need it.</p>
       </div>
       <div class="faq-item">
         <h4>Can you help if I already have a website?</h4>
